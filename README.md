@@ -1,1 +1,2 @@
-# TodoList
+# TodoList in Js
+Practicing JavaScript 😁
