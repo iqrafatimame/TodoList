@@ -28,12 +28,16 @@ var todoList = {
   },
 
   deleteTodo : function(position){
-      this.todos.splice(position,1); // splice(position, number of items to be deleted);  
+      if (position <= this.todos.length - 1){
+        this.todos.splice(position,1); // splice(position, number of items to be deleted);  
+      }
   },
 
   toggleCompleted : function(position) {
       var todo = this.todos[position];
-      todo.completed =!todo.completed;
+      if (todo != undefined){
+        todo.completed = !todo.completed;
+      }
       this.displayTodos();
   },
 
@@ -97,7 +101,7 @@ var handlers={                  // to simplify our code we used a object to acce
     },
     deleteTodo:  function(){
         var deleteTodoPosition=document.getElementById('deleteTodoPosition');
-        todoList.changeTodos(deleteTodoPosition.valueAsNumber);
+        todoList.deleteTodo(deleteTodoPosition.valueAsNumber);
         deleteTodoPosition.value='';
         view.displayTodos();
     },
